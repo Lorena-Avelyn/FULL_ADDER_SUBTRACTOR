@@ -38,18 +38,74 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
-**Procedure**
+![WhatsApp Image 2025-04-22 at 22 36 14_d8c59f94](https://github.com/user-attachments/assets/0e478572-6b94-4186-b5d6-71c66455e404)
 
-Write the detailed procedure here
+![WhatsApp Image 2025-04-22 at 22 36 21_fb190da1](https://github.com/user-attachments/assets/82bc50d4-9866-4224-b71d-15ab03dd86b0)
+
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+
+Developed by: Lorena Avelyn R
+
+RegisterNumber:212224040174
+
+FULL ADDER
+```
+module FAS(a, b, c, sum, carry);
+    input a;
+    input b;
+    input c;
+    output sum;
+    output carry;
+	 reg sum,carry;
+	 reg t1,t2,t3;
+	 always @ (a or b or c) begin
+	 sum = (a^b)^c;
+	 t1=a & b;
+	 t2=b & c;
+	 t3=a & c;
+	 carry=(t1 | t2) | t3;
+	 end
+endmodule
+
+```
+FULL SUBTRACTOR
+```
+module FAS1(a, b, cin, diff, borrow);
+    input a;
+    input b;
+    input cin;
+    output diff;
+    output borrow;
+	 reg t1,t2,t3;
+	 reg diff,borrow;
+	 reg abar;
+	 always @ (a or b or cin) begin
+	 abar= ~ a;
+	 diff = (a^b)^cin;
+	 t1=abar & b;
+	 t2=b & cin;
+	 t3=cin & abar;
+	 borrow=(t1 | t2) | t3;
+	 end
+	endmodule
+
+```
 
 **RTL Schematic**
 
+  ![WhatsApp Image 2025-04-22 at 22 21 57_c17e063b](https://github.com/user-attachments/assets/4d68bc05-6a15-4e1f-af9d-9725222eb765)
+
+  ![WhatsApp Image 2025-04-22 at 22 31 22_8441dbac](https://github.com/user-attachments/assets/f0d9ecb3-9e10-4e4c-82a6-b3f5cfa7b4e6)
+
 **Output Timing Waveform**
+
+![WhatsApp Image 2025-04-22 at 22 21 56_333ac5e4](https://github.com/user-attachments/assets/641d20c8-2697-444d-94d9-1f3dc21d1253)
+
+![WhatsApp Image 2025-04-22 at 22 31 23_42b117d3](https://github.com/user-attachments/assets/97a978fe-44e2-4623-a74b-1b1c7b09c000)
+
 
 **Result:**
 
